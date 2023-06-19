@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDaoJDBCImpl implements UserDao {
     private final Connection connection = Util.getConnection();
 
-    private final String userTableName = "users";
+    private final String assertable = "users";
 
     public UserDaoJDBCImpl() {
 
@@ -21,12 +21,12 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
 
-        try (ResultSet resultSet = connection.createStatement().executeQuery(String.format("SHOW TABLES FROM test LIKE '%s'", userTableName))) {
+        try (ResultSet resultSet = connection.createStatement().executeQuery(String.format("SHOW TABLES FROM test LIKE '%s'", assertable))) {
             if (resultSet.next()) {
                 System.out.println("Table exists");
             } else {
                 connection.createStatement().executeUpdate(String.format("CREATE TABLE %s (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(255), "
-                                                                        + "lastName VARCHAR(255), age TINYINT, PRIMARY KEY ( id ))", userTableName));
+                                                                        + "lastName VARCHAR(255), age TINYINT, PRIMARY KEY ( id ))", assertable));
                 System.out.println("Table create");
             }
         } catch (SQLException ignored) {
@@ -37,13 +37,13 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try {
-            connection.createStatement().executeUpdate(String.format("DROP TABLES %s", userTableName));
+            connection.createStatement().executeUpdate(String.format("DROP TABLES %s", assertable));
         } catch (SQLException ignored) {
         }
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        try (PreparedStatement prepared = connection.prepareStatement(String.format("INSERT INTO %s (name, lastName, age) VALUES (?, ?, ?)", userTableName))) {
+        try (PreparedStatement prepared = connection.prepareStatement(String.format("INSERT INTO %s (name, lastName, age) VALUES (?, ?, ?)", assertable))) {
             prepared.setString(1, name);
             prepared.setString(2, lastName);
             prepared.setByte(3, age);
@@ -55,7 +55,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void removeUserById(long id) {
-        try (PreparedStatement prepared = connection.prepareStatement(String.format("DELETE FROM %s WHERE id = ?", userTableName))) {
+        try (PreparedStatement prepared = connection.prepareStatement(String.format("DELETE FROM %s WHERE id = ?", assertable))) {
             prepared.setLong(1, id);
             prepared.executeUpdate();
             System.out.printf("User %s deleted \n", id);
@@ -65,7 +65,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
-        try (ResultSet rs = connection.createStatement().executeQuery(String.format("SELECT * FROM %s", userTableName))) {
+        try (ResultSet rs = connection.createStatement().executeQuery(String.format("SELECT * FROM %s", assertable))) {
 
             while (rs.next()) {
                 User user = new User();
@@ -83,7 +83,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         try {
-            connection.createStatement().executeUpdate(String.format("TRUNCATE test.%s", userTableName));
+            connection.createStatement().executeUpdate(String.format("TRUNCATE test.%s", assertable));
         } catch (SQLException ignored) {
         }
     }

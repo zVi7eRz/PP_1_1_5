@@ -7,11 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.criteria.JpaCriteriaQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
 
-    private final String userTableName = "users";
+    private final String assertable = "users";
+    private Transaction transaction = null;
 
     public UserDaoHibernateImpl() {
 
@@ -19,69 +21,96 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        try {
-            Session session = Util.getSessionFactory().openSession();
-            Transaction transaction = session.beginTransaction();
+        try (Session session = Util.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
             session.createNativeQuery(String.format("CREATE TABLE %s (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(255), "
-                            + "lastName VARCHAR(255), age TINYINT, PRIMARY KEY ( id ))", userTableName))
+                            + "lastName VARCHAR(255), age TINYINT, PRIMARY KEY ( id ))", assertable))
                     .executeUpdate();
             transaction.commit();
-            session.close();
         } catch (Exception e) {
             System.out.println("Table exist");
+            if (transaction != null) {
+                transaction.rollback();
+            }
         }
     }
 
     @Override
     public void dropUsersTable() {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.createNativeQuery(String.format("DROP TABLE IF EXISTS %s", userTableName))
-                .executeUpdate();
-        transaction.commit();
-        session.close();
+        try (Session session = Util.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.createNativeQuery(String.format("DROP TABLE IF EXISTS %s", assertable))
+                    .executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.println("users not drop");
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
     }
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        User user = new User(name, lastName, age);
-        session.persist(user);
-        transaction.commit();
-        session.close();
+        try (Session session = Util.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            User user = new User(name, lastName, age);
+            session.persist(user);
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.printf("%s not save\n", name);
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+
     }
 
     @Override
     public void removeUserById(long id) {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        User user = session.get(User.class, id);
-        session.remove(user);
-        transaction.commit();
-        session.close();
+        try (Session session = Util.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            User user = session.get(User.class, id);
+            session.remove(user);
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.printf("user id %s not found\n", id);
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
     }
 
     @Override
     public List<User> getAllUsers() {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        JpaCriteriaQuery<User> cq = session.getCriteriaBuilder().createQuery(User.class);
-        cq.select(cq.from(User.class));
-        List<User> usersList = session.createQuery(cq).getResultList();
-        transaction.commit();
-        session.close();
+        List<User> usersList = new ArrayList<>();
+        try (Session session = Util.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            JpaCriteriaQuery<User> cq = session.getCriteriaBuilder().createQuery(User.class);
+            cq.select(cq.from(User.class));
+            usersList = session.createQuery(cq).getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
         return usersList;
     }
 
     @Override
     public void cleanUsersTable() {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        for (User user : getAllUsers()) {
-            session.remove(user);
+        try (Session session = Util.getSessionFactory().openSession();) {
+            transaction = session.beginTransaction();
+            for (User user : getAllUsers()) {
+                session.remove(user);
+                transaction.commit();
+            }
+        } catch (Exception e) {
+            System.out.printf("%s table not clean\n", assertable);
+            if (transaction != null) {
+                transaction.rollback();
+            }
         }
-        transaction.commit();
-        session.close();
     }
 }
