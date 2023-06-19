@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.criteria.JpaCriteriaQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -83,29 +82,23 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        List<User> usersList = new ArrayList<>();
+        List<User> usersList;
         try (Session session = Util.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
             JpaCriteriaQuery<User> cq = session.getCriteriaBuilder().createQuery(User.class);
             cq.select(cq.from(User.class));
             usersList = session.createQuery(cq).getResultList();
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
         return usersList;
     }
 
     @Override
     public void cleanUsersTable() {
-        try (Session session = Util.getSessionFactory().openSession();) {
+        try(Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             for (User user : getAllUsers()) {
                 session.remove(user);
-                transaction.commit();
             }
+            transaction.commit();
         } catch (Exception e) {
             System.out.printf("%s table not clean\n", assertable);
             if (transaction != null) {

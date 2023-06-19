@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="test@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.48">
-    <root id="1"/>
+    <root id="1">
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <ServerVersion>8.0.33</ServerVersion>
+    </root>
     <collation id="2" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
     </collation>
@@ -1263,7 +1267,11 @@ stats_persistent
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <index id="336" parent="299" name="PRIMARY">
+    <table id="336" parent="293" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <index id="337" parent="299" name="PRIMARY">
       <ColNames>Host
 User
 Db
@@ -1272,38 +1280,38 @@ Column_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="337" parent="299" name="PRIMARY">
+    <key id="338" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="338" parent="300" name="PRIMARY">
+    <index id="339" parent="300" name="PRIMARY">
       <ColNames>component_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="339" parent="300" name="PRIMARY">
+    <key id="340" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="340" parent="301" name="PRIMARY">
+    <index id="341" parent="301" name="PRIMARY">
       <ColNames>Host
 User
 Db</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="341" parent="301" name="User">
+    <index id="342" parent="301" name="User">
       <ColNames>User</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="342" parent="301" name="PRIMARY">
+    <key id="343" parent="301" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="343" parent="302" name="PRIMARY">
+    <index id="344" parent="302" name="PRIMARY">
       <ColNames>HOST
 USER
 DEFAULT_ROLE_HOST
@@ -1311,113 +1319,113 @@ DEFAULT_ROLE_USER</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="344" parent="302" name="PRIMARY">
+    <key id="345" parent="302" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="345" parent="303" name="PRIMARY">
+    <index id="346" parent="303" name="PRIMARY">
       <ColNames>cost_name
 engine_name
 device_type</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="346" parent="303" name="PRIMARY">
+    <key id="347" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="347" parent="304" name="PRIMARY">
+    <index id="348" parent="304" name="PRIMARY">
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="348" parent="304" name="PRIMARY">
+    <key id="349" parent="304" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="349" parent="305" name="PRIMARY">
+    <index id="350" parent="305" name="PRIMARY">
       <ColNames>USER
 HOST
 PRIV</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="350" parent="305" name="PRIMARY">
+    <key id="351" parent="305" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="351" parent="306" name="PRIMARY">
+    <index id="352" parent="306" name="PRIMARY">
       <ColNames>source_uuid
 interval_start</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="352" parent="306" name="PRIMARY">
+    <key id="353" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="353" parent="307" name="PRIMARY">
+    <index id="354" parent="307" name="PRIMARY">
       <ColNames>help_category_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="354" parent="307" name="name">
+    <index id="355" parent="307" name="name">
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="355" parent="307" name="PRIMARY">
+    <key id="356" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="356" parent="308" name="PRIMARY">
+    <index id="357" parent="308" name="PRIMARY">
       <ColNames>help_keyword_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="357" parent="308" name="name">
+    <index id="358" parent="308" name="name">
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="358" parent="308" name="PRIMARY">
+    <key id="359" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="359" parent="309" name="PRIMARY">
+    <index id="360" parent="309" name="PRIMARY">
       <ColNames>help_keyword_id
 help_topic_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="360" parent="309" name="PRIMARY">
+    <key id="361" parent="309" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="361" parent="310" name="PRIMARY">
+    <index id="362" parent="310" name="PRIMARY">
       <ColNames>help_topic_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="362" parent="310" name="name">
+    <index id="363" parent="310" name="name">
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="363" parent="310" name="PRIMARY">
+    <key id="364" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="364" parent="311" name="PRIMARY">
+    <index id="365" parent="311" name="PRIMARY">
       <ColNames>database_name
 table_name
 index_name
@@ -1425,35 +1433,35 @@ stat_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="365" parent="311" name="PRIMARY">
+    <key id="366" parent="311" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="366" parent="312" name="PRIMARY">
+    <index id="367" parent="312" name="PRIMARY">
       <ColNames>database_name
 table_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="367" parent="312" name="PRIMARY">
+    <key id="368" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="368" parent="313" name="PRIMARY">
+    <index id="369" parent="313" name="PRIMARY">
       <ColNames>epoch
 orig_server_id
 orig_epoch</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="369" parent="313" name="PRIMARY">
+    <key id="370" parent="313" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="370" parent="314" name="PRIMARY">
+    <index id="371" parent="314" name="PRIMARY">
       <ColNames>Host
 User
 Password_timestamp</ColNames>
@@ -1461,22 +1469,22 @@ Password_timestamp</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="371" parent="314" name="PRIMARY">
+    <key id="372" parent="314" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="372" parent="315" name="PRIMARY">
+    <index id="373" parent="315" name="PRIMARY">
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="373" parent="315" name="PRIMARY">
+    <key id="374" parent="315" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="374" parent="316" name="PRIMARY">
+    <index id="375" parent="316" name="PRIMARY">
       <ColNames>Host
 User
 Db
@@ -1485,16 +1493,16 @@ Routine_type</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="375" parent="316" name="Grantor">
+    <index id="376" parent="316" name="Grantor">
       <ColNames>Grantor</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="376" parent="316" name="PRIMARY">
+    <key id="377" parent="316" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="377" parent="317" name="PRIMARY">
+    <index id="378" parent="317" name="PRIMARY">
       <ColNames>Host
 User
 Proxied_host
@@ -1502,16 +1510,16 @@ Proxied_user</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="378" parent="317" name="Grantor">
+    <index id="379" parent="317" name="Grantor">
       <ColNames>Grantor</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="379" parent="317" name="PRIMARY">
+    <key id="380" parent="317" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="380" parent="318" name="PRIMARY">
+    <index id="381" parent="318" name="PRIMARY">
       <ColNames>Channel_name
 Host
 Port
@@ -1520,53 +1528,53 @@ Managed_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="381" parent="318" name="Channel_name">
+    <index id="382" parent="318" name="Channel_name">
       <ColNames>Channel_name
 Managed_name</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="382" parent="318" name="PRIMARY">
+    <key id="383" parent="318" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="383" parent="319" name="PRIMARY">
+    <index id="384" parent="319" name="PRIMARY">
       <ColNames>Channel_name
 Managed_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="384" parent="319" name="PRIMARY">
+    <key id="385" parent="319" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="385" parent="320" name="PRIMARY">
+    <index id="386" parent="320" name="PRIMARY">
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="386" parent="320" name="PRIMARY">
+    <key id="387" parent="320" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="387" parent="321" name="PRIMARY">
+    <index id="388" parent="321" name="PRIMARY">
       <ColNames>name
 event</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="388" parent="321" name="event">
+    <index id="389" parent="321" name="event">
       <ColNames>event</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="389" parent="321" name="PRIMARY">
+    <key id="390" parent="321" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="390" parent="322" name="PRIMARY">
+    <index id="391" parent="322" name="PRIMARY">
       <ColNames>FROM_HOST
 FROM_USER
 TO_HOST
@@ -1574,63 +1582,63 @@ TO_USER</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="391" parent="322" name="PRIMARY">
+    <key id="392" parent="322" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="392" parent="323" name="PRIMARY">
+    <index id="393" parent="323" name="PRIMARY">
       <ColNames>cost_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="393" parent="323" name="PRIMARY">
+    <key id="394" parent="323" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="394" parent="324" name="PRIMARY">
+    <index id="395" parent="324" name="PRIMARY">
       <ColNames>Server_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="395" parent="324" name="PRIMARY">
+    <key id="396" parent="324" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="396" parent="325" name="PRIMARY">
+    <index id="397" parent="325" name="PRIMARY">
       <ColNames>Channel_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="397" parent="325" name="PRIMARY">
+    <key id="398" parent="325" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="398" parent="326" name="PRIMARY">
+    <index id="399" parent="326" name="PRIMARY">
       <ColNames>Channel_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="399" parent="326" name="PRIMARY">
+    <key id="400" parent="326" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="400" parent="327" name="PRIMARY">
+    <index id="401" parent="327" name="PRIMARY">
       <ColNames>Channel_name
 Id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="401" parent="327" name="PRIMARY">
+    <key id="402" parent="327" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="402" parent="328" name="PRIMARY">
+    <index id="403" parent="328" name="PRIMARY">
       <ColNames>Host
 User
 Db
@@ -1638,108 +1646,136 @@ Table_name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="403" parent="328" name="Grantor">
+    <index id="404" parent="328" name="Grantor">
       <ColNames>Grantor</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="404" parent="328" name="PRIMARY">
+    <key id="405" parent="328" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="405" parent="329" name="Time_zone_id">
+    <column id="406" parent="329" name="Time_zone_id">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <index id="406" parent="329" name="PRIMARY">
+    <index id="407" parent="329" name="PRIMARY">
       <ColNames>Time_zone_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="407" parent="329" name="PRIMARY">
+    <key id="408" parent="329" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="408" parent="330" name="PRIMARY">
+    <index id="409" parent="330" name="PRIMARY">
       <ColNames>Transition_time</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="409" parent="330" name="PRIMARY">
+    <key id="410" parent="330" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="410" parent="331" name="PRIMARY">
+    <index id="411" parent="331" name="PRIMARY">
       <ColNames>Name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="411" parent="331" name="PRIMARY">
+    <key id="412" parent="331" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="412" parent="332" name="PRIMARY">
+    <index id="413" parent="332" name="PRIMARY">
       <ColNames>Time_zone_id
 Transition_time</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="413" parent="332" name="PRIMARY">
+    <key id="414" parent="332" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="414" parent="333" name="PRIMARY">
+    <index id="415" parent="333" name="PRIMARY">
       <ColNames>Time_zone_id
 Transition_type_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="415" parent="333" name="PRIMARY">
+    <key id="416" parent="333" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <index id="416" parent="334" name="PRIMARY">
+    <index id="417" parent="334" name="PRIMARY">
       <ColNames>Host
 User</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="417" parent="334" name="PRIMARY">
+    <key id="418" parent="334" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="418" parent="335" name="id">
+    <column id="419" parent="335" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="419" parent="335" name="name">
+    <column id="420" parent="335" name="name">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="420" parent="335" name="lastName">
+    <column id="421" parent="335" name="lastName">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="421" parent="335" name="age">
+    <column id="422" parent="335" name="age">
       <DasType>tinyint|0s</DasType>
       <Position>4</Position>
     </column>
-    <index id="422" parent="335" name="PRIMARY">
+    <index id="423" parent="335" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="423" parent="335" name="PRIMARY">
+    <key id="424" parent="335" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="425" parent="336" name="id">
+      <AutoIncrement>2</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="426" parent="336" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="427" parent="336" name="lastName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="428" parent="336" name="age">
+      <DasType>tinyint|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <index id="429" parent="336" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="430" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
