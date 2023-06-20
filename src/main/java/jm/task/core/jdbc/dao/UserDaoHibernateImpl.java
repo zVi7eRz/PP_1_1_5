@@ -11,7 +11,7 @@ import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
 
-    private final String assertable = "users";
+    private final String ASSERTABLE = "users";
     private Transaction transaction = null;
 
     public UserDaoHibernateImpl() {
@@ -23,7 +23,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.createNativeQuery(String.format("CREATE TABLE %s (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(255), "
-                            + "lastName VARCHAR(255), age TINYINT, PRIMARY KEY ( id ))", assertable))
+                            + "lastName VARCHAR(255), age TINYINT, PRIMARY KEY ( id ))", ASSERTABLE))
                     .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
@@ -38,7 +38,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void dropUsersTable() {
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.createNativeQuery(String.format("DROP TABLE IF EXISTS %s", assertable))
+            session.createNativeQuery(String.format("DROP TABLE IF EXISTS %s", ASSERTABLE))
                     .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
@@ -100,7 +100,7 @@ public class UserDaoHibernateImpl implements UserDao {
             }
             transaction.commit();
         } catch (Exception e) {
-            System.out.printf("%s table not clean\n", assertable);
+            System.out.printf("%s table not clean\n", ASSERTABLE);
             if (transaction != null) {
                 transaction.rollback();
             }
